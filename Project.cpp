@@ -92,6 +92,10 @@ temp->next = newTask;
 }
 
 void Display (){
+    if (Head == NULL){
+        cout<<"Empty list please add a task"<<endl;
+        return ;
+    }
 Task * temp = Head  ;
 while (temp != NULL){
         cout<<"TaskID : "<<temp->id<<endl ;
@@ -108,17 +112,35 @@ while (temp != NULL){
 
 
 void MarkDone (int id){
+    if (Head == NULL){
+        cout<<"Empty list please add a task"<<endl;
+        return ;
+    }
     Task * temp = Head  ;
-    while (temp->id != id)
+    while (temp != NULL && temp->id != id)
         temp = temp->next;
+
+    if (temp == NULL){
+        cout << "Not Found\n";
+        return;
+    }
+
     temp -> status = true;
 }
 void DeleteTask (int id){
+    if (Head == NULL){
+        cout<<"Empty list please add a task"<<endl;
+        return ;
+    }
     Task * temp = Head ;
     Task * prev; 
-    while (temp->id != id){
+    while (temp != NULL && temp->id != id){
         prev =  temp ;
         temp = temp->next;
+    }
+    if (temp == NULL){
+        cout << "Not Found\n";
+        return;
     }
     if (temp == Head)
         Head = NULL;
@@ -128,10 +150,18 @@ void DeleteTask (int id){
 
 
 void SearchTask(int id){
+    if (Head == NULL){
+        cout<<"Empty list please add a task"<<endl;
+        return ;
+    }
     Task * temp = Head  ;
-    while (temp->id != id)
+    while (temp != NULL && temp->id != id)
         temp = temp->next;
 
+    if (temp == NULL){
+        cout << "Not Found\n";
+        return;
+    }
     cout<<"TaskID : "<<temp->id<<endl ;
     cout<<"Description : "<<temp->description<<endl ;
     cout<<"Status : ";
