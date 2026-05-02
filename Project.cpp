@@ -73,7 +73,7 @@ while (inprogres){
 
 
 void AddTask (string description){
-    Task * newTask = new (Task);
+    Task * newTask = new Task;
     Task * temp ;
     newTask -> description = description; 
     newTask -> next = NULL;
@@ -143,7 +143,7 @@ void DeleteTask (int id){
         return;
     }
     if (temp == Head)
-        Head = NULL;
+        Head = temp->next;
     else
         prev -> next = temp -> next ;
 }
